@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 
 class listaCarro{
-  public List<string> lista_Carros = new List<string>();
-  public List<double> lista_Consumo = new List<double>();
+
+  public string carro;
+  public double consumo;
+
+  public List<carro> lista_Carros = new List<carro>();
+  public List<consumo> lista_Consumo = new List<consumo>();
 
   public listaCarro(){
     lista_Carros.Add("Ferrari");
