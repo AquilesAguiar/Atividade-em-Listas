@@ -4,13 +4,13 @@ class MainClass {
   public static void Main (string[] args) {
    listaCarro informacoes = new listaCarro();
 
-   string carroEco = '';
+   string carroEco =  informacoes.lista_Carros[0];
    double contadorEco = informacoes.lista_Consumo[0];
   
-   for(int x = 0;x > informacoes.lista_Carro;x++){
+   for(int x = 0;x < informacoes.lista_Carros.Count;x++){
      if(informacoes.lista_Consumo[x] > contadorEco ){
        contadorEco = informacoes.lista_Consumo[x];
-       carroEco = informacoes.lista_Carro[x];
+       carroEco = informacoes.lista_Carros[x];
      }
    }
 
@@ -18,8 +18,12 @@ class MainClass {
 
    Console.WriteLine($"O consumo do carro mais econômico {contadorEco}");
 
-   for (int x = 0; i < informacoes.lista_Carro ;x++ ){
+   for (int x = 0; x < informacoes.lista_Carros.Count ;x++ ){
+     double valorLitro = (1000 /informacoes.lista_Consumo[x])*4.89;
      
+     Console.WriteLine($"O modelo do carro mais econômico {informacoes.lista_Carros[x]}");
+
+     Console.WriteLine($" valor = {valorLitro}");
    }
   
 
