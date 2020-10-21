@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+
+
+
+class MainClass {
+  public static void Main (string[] args) {
+    
+    List<Carro> lista_Carros = new List<Carro>();
+    List<Carro> lista_Consumo = new List<Carro>();
+
+
+   listaCarro informacoes = new listaCarro();
+
+   string carroEco =  informacoes.lista_Carros[0];
+   double contadorEco = informacoes.lista_Consumo[0];
+  
+   for(int x = 0;x < informacoes.lista_Carros.Count;x++){
+     if(informacoes.lista_Consumo[x] > contadorEco ){
+       contadorEco = informacoes.lista_Consumo[x];
+       carroEco = informacoes.lista_Carros[x];
+     }
+   }
+
+   Console.WriteLine($"O modelo do carro mais econômico {carroEco}");
+
+   Console.WriteLine($"O consumo do carro mais econômico {contadorEco}");
+
+   for (int x = 0; x < informacoes.lista_Carros.Count ;x++ ){
+     double valorLitro = (1000 /informacoes.lista_Consumo[x])*4.89;
+     
+     Console.WriteLine($"O modelo do carro mais econômico {informacoes.lista_Carros[x]}");
+
+     Console.WriteLine($" valor = {valorLitro}");
+   }
+  
+
+  }
+}

@@ -1,31 +1,57 @@
 using System;
+using System.Collections.Generic;
 
 class MainClass {
   public static void Main (string[] args) {
-   listaCarro informacoes = new listaCarro();
+    //definindo alguma Variaveis
+    string continuar="s", marca;
+    double consumo;
+    //Instaciando a Classe Carro
+    Carro NovoAut = new Carro("TESTE", 0);
+    
+    //Instaciando Lista
+    List<Carro> listaCarros = new List<Carro>();
 
-   string carroEco =  informacoes.lista_Carros[0];
-   double contadorEco = informacoes.lista_Consumo[0];
-  
-   for(int x = 0;x < informacoes.lista_Carros.Count;x++){
-     if(informacoes.lista_Consumo[x] > contadorEco ){
-       contadorEco = informacoes.lista_Consumo[x];
-       carroEco = informacoes.lista_Carros[x];
-     }
-   }
+    //Repetição Para Adicionar Itens a Lista
+    while (continuar=="s"){
+      
+      Console.Write("Insira a Marca do Carro>>");
+      marca = Console.ReadLine();
 
-   Console.WriteLine($"O modelo do carro mais econômico {carroEco}");
+      Console.Write("Km do Carro>>");
+      consumo = double.Parse(Console.ReadLine());
 
-   Console.WriteLine($"O consumo do carro mais econômico {contadorEco}");
+      //Adicionando Itens a Lista
+      NovoAut = new Carro(marca, consumo);
+      listaCarros.Add(NovoAut);
 
-   for (int x = 0; x < informacoes.lista_Carros.Count ;x++ ){
-     double valorLitro = (1000 /informacoes.lista_Consumo[x])*4.89;
-     
-     Console.WriteLine($"O modelo do carro mais econômico {informacoes.lista_Carros[x]}");
+      Console.Write("Deseja Continuar? s/n >>");
+      continuar = Console.ReadLine();
+    }
+    
+    //Define o Menor consumo da lista ni index 0
+    Carro menor_consumo = listaCarros[0];
 
-     Console.WriteLine($" valor = {valorLitro}");
-   }
-  
+
+    //Definir o Carro com o Menor consumo na lista
+    for(int i = 1;i < listaCarros.Count ;i++){
+      if(listaCarros[i].getConsumo() > menor_consumo.getConsumo())
+      menor_consumo = listaCarros[i];
+    }
+
+    Console.WriteLine($"O modelo do carro mais econômico {menor_consumo.getMarca()}");
+
+   Console.WriteLine($"O consumo do carro mais econômico {menor_consumo.getConsumo()}");
+
+    // Calcula A quantidade de Litros e o valor em Uma determina distancia
+
+    for(int i = 0 ; i < listaCarros.Count; i++){
+      Console.WriteLine($"{listaCarros[i].getMarca()}");
+
+      Console.WriteLine($"Listros Gastos em 1000 KM: {1000/listaCarros[i].getConsumo()}");
+
+      Console.WriteLine($"Valor gasto ao percorrer 1000 KM:{(1000/listaCarros[i].getConsumo())*4.89}");    
+    }
 
   }
 }
